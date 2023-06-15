@@ -13,3 +13,5 @@
     -   entities/ = Clases de java
     -   interfaces/ = Interfaces de java
     -   exceptions/ = Clases de ecepciones personalizadas (extienden de Exception)
+
+La carpeta de testing contiene test unitarios para verificar que el resto de la aplicaicion funcióne.

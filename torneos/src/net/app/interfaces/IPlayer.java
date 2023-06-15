@@ -1,11 +1,11 @@
 package net.app.interfaces;
 
-public interface Player {
+public interface IPlayer {
     String getName();
-
-    void setName();
 
     int getTotalScore();
 
     void incrementTotalScore();
+
+    void decrementTotalScore();
 }
