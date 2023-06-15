@@ -1,8 +1,8 @@
-package interfaces;
+package net.app.interfaces;
 
 import java.util.Map;
 
-import entities.utilities.Status;
+import net.app.entities.utilities.Status;
 
 public interface Match {
     Player getPlayer1();

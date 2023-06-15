@@ -1,4 +1,4 @@
-package interfaces;
+package net.app.interfaces;
 
 public interface Player {
     String getName();
