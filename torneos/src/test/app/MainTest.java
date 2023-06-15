@@ -1,8 +1,8 @@
 package test.app;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -66,12 +66,12 @@ public class MainTest {
         assertEquals("Player1 name is wrong", player1.getName(), "Pedro");
         assertEquals("Player2 name is wrong", player2.getName(), "Pablo");
         Set<IPlayer> players = tourney.getPlayers();
-        assertTrue("Tourney is not adding players correctly", players.contains(player1) && players.contains(player2));
-        assertEquals("Player initial score is wrong", player1.getTotalScore(), 0);
+        assertTrue(players.contains(player1) && players.contains(player2), "Tourney is not adding players correctly");
+        assertEquals(player1.getTotalScore(), 0, "Player initial score is wrong");
         player1.incrementTotalScore();
-        assertEquals("Player is not increasing its score correctly", player1.getTotalScore(), 1);
+        assertEquals(player1.getTotalScore(), 1, "Player is not increasing its score correctly");
         player1.decrementTotalScore();
-        assertEquals("Player is not decreasing its score correctly", player1.getTotalScore(), 0);
+        assertEquals(player1.getTotalScore(), 0, "Player is not decreasing its score correctly");
     }
 
     @Test
@@ -81,10 +81,10 @@ public class MainTest {
         assertEquals(tourney.getName(), "Tenis");
         tourney.generateMatches();
         matches = tourney.getMatches();
-        assertTrue("Tourneys is not adding matches correctly", matches.size() == 1);
+        assertTrue(matches.size() == 1, "Tourneys is not adding matches correctly");
         System.setOut(new PrintStream(outContent));
         tourney.printScheduling();
-        assertFalse("Tourney schedule is empty on printing", outContent.toString().isEmpty());
+        assertFalse(outContent.toString().isEmpty(), "Tourney schedule is empty on printing");
         System.setOut(originalOut);
         outContent = new ByteArrayOutputStream();
     }
@@ -100,8 +100,8 @@ public class MainTest {
         match.setStatus(Status.ACTIVE);
         assertEquals(Status.ACTIVE, match.getStatus());
         assertDoesNotThrow(() -> match.addScore(player1), UNNECESARY_EXCEPTION);
-        assertTrue("Match is not adding scores correctly to the map",
-                match.getScores().containsKey(player1) && match.getScores().get(player1) == 1);
+        assertTrue(match.getScores().containsKey(player1) && match.getScores().get(player1) == 1,
+                "Match is not adding scores correctly to the map");
         match.setStatus(Status.FINISHED);
         assertEquals(Status.FINISHED, match.getStatus());
         assertThrows(MatchIsFinishedException.class, () -> match.addScore(player1),
@@ -116,8 +116,8 @@ public class MainTest {
         assertThrows(TourneyExistsException.class, () -> tournamentManager.addTourney(tourney),
                 "Tourney already exists, it needs to throw TourneyExistsException");
         List<ITourney> tourneys = tournamentManager.getTourneys();
-        assertTrue("Tournament Manager is not adding tourneys correctly", tourneys.size() == 1);
-        assertEquals("Tourney added wrong on TournamentManager", tourney, tourneys.get(0));
+        assertTrue(tourneys.size() == 1, "Tournament Manager is not adding tourneys correctly");
+        assertEquals(tourney, tourneys.get(0), "Tourney added wrong on TournamentManager");
     }
 
 }
