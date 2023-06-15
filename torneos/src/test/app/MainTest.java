@@ -109,7 +109,7 @@ public class MainTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     @DisplayName("Tournament manager")
     public void tournamentManagerTest() {
         assertDoesNotThrow(() -> tournamentManager.addTourney(tourney), UNNECESARY_EXCEPTION);
