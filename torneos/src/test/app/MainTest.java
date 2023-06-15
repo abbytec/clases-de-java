@@ -11,7 +11,7 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -34,17 +34,17 @@ import net.app.interfaces.ITourney;
 @DisplayName("Testing tournament making")
 @TestMethodOrder(OrderAnnotation.class)
 public class MainTest {
-    IPlayer player1;
-    IPlayer player2;
+    static IPlayer player1;
+    static IPlayer player2;
     List<IMatch> matches;
-    ITourney tourney;
-    ITournamentManager tournamentManager;
+    static ITourney tourney;
+    static ITournamentManager tournamentManager;
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private static final PrintStream originalOut = System.out;
     private static final String UNNECESARY_EXCEPTION = "Unnecesary exception throwed";
 
     @BeforeAll
-    void setUp() {
+    static void setUp() {
         player1 = new Player("Pedro");
         player2 = new Player("Pablo");
         tourney = new Tourney("Tenis");
