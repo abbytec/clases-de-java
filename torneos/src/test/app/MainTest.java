@@ -63,15 +63,15 @@ public class MainTest {
         assertThrows(PlayerExistsException.class, () -> tourney.addPlayer(player1),
                 "Repeated player is not throwing an exception");
 
-        assertEquals("Player1 name is wrong", player1.getName(), "Pedro");
-        assertEquals("Player2 name is wrong", player2.getName(), "Pablo");
+        assertEquals("Pedro", player1.getName(), "Player1 name is wrong");
+        assertEquals("Pablo", player2.getName(), "Player2 name is wrong");
         Set<IPlayer> players = tourney.getPlayers();
         assertTrue(players.contains(player1) && players.contains(player2), "Tourney is not adding players correctly");
-        assertEquals(player1.getTotalScore(), 0, "Player initial score is wrong");
+        assertEquals(0, player1.getTotalScore(), "Player initial score is wrong");
         player1.incrementTotalScore();
-        assertEquals(player1.getTotalScore(), 1, "Player is not increasing its score correctly");
+        assertEquals(1, player1.getTotalScore(), "Player is not increasing its score correctly");
         player1.decrementTotalScore();
-        assertEquals(player1.getTotalScore(), 0, "Player is not decreasing its score correctly");
+        assertEquals(0, player1.getTotalScore(), "Player is not decreasing its score correctly");
     }
 
     @Test
