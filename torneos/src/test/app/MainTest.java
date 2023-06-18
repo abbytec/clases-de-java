@@ -90,6 +90,7 @@ public class MainTest {
         tourney.printScheduling();
         assertFalse(outContent.toString().isEmpty(), "Tourney schedule is empty on printing");
         System.setOut(originalOut);
+        // TODO: Tourney removePlayer() tests
         outContent = new ByteArrayOutputStream();
     }
 
