@@ -36,7 +36,7 @@ import net.app.interfaces.ITourney;
 public class MainTest {
     static IPlayer player1;
     static IPlayer player2;
-    List<IMatch> matches;
+    static List<IMatch> matches;
     static ITourney tourney;
     static ITournamentManager tournamentManager;
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -74,13 +74,17 @@ public class MainTest {
         assertEquals(0, player1.getTotalScore(), "Player is not decreasing its score correctly");
     }
 
+    synchronized void setMatches(List<IMatch> externalMatches) {
+        matches = externalMatches;
+    }
+
     @Test
     @Order(2)
     @DisplayName("Tourneys and matches")
     public void tourneysTest() {
         assertEquals(tourney.getName(), "Tenis");
         tourney.generateMatches();
-        matches = tourney.getMatches();
+        setMatches(tourney.getMatches());
         assertTrue(matches.size() == 1, "Tourneys is not adding matches correctly");
         System.setOut(new PrintStream(outContent));
         tourney.printScheduling();
