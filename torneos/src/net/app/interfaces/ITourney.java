@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.app.exceptions.PlayerExistsException;
+import net.app.exceptions.PlayerNotExistsException;
 import net.app.exceptions.PlayerIsOnAMatchException;
 
 public interface ITourney {
@@ -14,7 +15,7 @@ public interface ITourney {
 
     Set<IPlayer> getPlayers();
 
-    void removePlayer(IPlayer p) throws PlayerIsOnAMatchException;
+    void removePlayer(IPlayer p) throws PlayerIsOnAMatchException, PlayerNotExistsException;
 
     void generateMatches();
 
