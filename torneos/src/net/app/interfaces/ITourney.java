@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.app.exceptions.PlayerExistsException;
+import net.app.exceptions.PlayerAlreadyPlayedException;
 import net.app.exceptions.PlayerNotExistsException;
 import net.app.exceptions.PlayerIsOnAMatchException;
 
